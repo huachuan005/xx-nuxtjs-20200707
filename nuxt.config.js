@@ -29,9 +29,16 @@ export default {
   ** Global CSS
   */
   css: [
+    'assets/styles/reset.less',
     'assets/styles/main.css',
     'element-ui/lib/theme-chalk/index.css'
   ],
+  // 加载页面的顶部的进度条
+  loading: {
+    color: '#20cc9c',
+    height: '2px',
+    continuous: true
+  },
   /*
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins

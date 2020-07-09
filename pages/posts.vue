@@ -33,14 +33,31 @@ export default {
     // The fetch method is used to fill the store before rendering the page
   },
   head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'My custom description'
+        }
+      ]
+    }
     // 配置当前页面的 Meta 标签
     // Set Meta Tags for this Page
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+      setTimeout(() => this.$nuxt.$loading.finish(), 500)
+    })
   }
 }
 </script>
 
-<style>
+<style lang="less" scoped>
+@import '~assets/styles/variable.less';
 .red {
-  color: red;
+  color: @colorButtonTheme;
 }
 </style>
