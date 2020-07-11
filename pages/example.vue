@@ -16,7 +16,7 @@ export default {
   layout: 'blog',
   data() {
     return {
-      title: 'hello world!!!!!',
+      title: "hello world!!!!!",
       name: 'World'
     }
   },
