@@ -16,7 +16,7 @@ export default {
   layout: 'blog',
   data() {
     return {
-      title: "hello world!!!!!",
+      title: 'hello world!!!!!',
       name: 'World'
     }
   },
@@ -63,20 +63,58 @@ export default {
   // validate({ params }) {
   //   console.log('validate -> params', params)
   //   console.log('validate -> params.id', params.id)
-  //   // 必须是number类型
-  //   // 如果校验方法返回的值不为 true或Promise中resolve 解析为false或抛出Error，Nuxt.js 将自动加载显示 404 错误页面或 500 错误页面。
+  // hc必须是number类型
+  // hc如果校验方法返回的值不为 true或Promise中resolve 解析为false或抛出Error，Nuxt.js 将自动加载显示 404 错误页面或 500 错误页面。
   //   return /^\d+$/.test(params.id)
   // },
   // hc 中间件使用查看文档：https://www.nuxtjs.cn/guide/routing#%E4%B8%AD%E9%97%B4%E4%BB%B6
   // middleware: 'stats',
+  // 组件渲染
   mounted() {
+    // 官方loading的使用
     this.$nextTick(() => {
+      // 开始
       this.$nuxt.$loading.start()
       setTimeout(() => {
+        // 结束
         this.$nuxt.$loading.finish()
       }, 500)
     })
   }
+  // Nuxt相关生命周期：
+  /*
+  middleware() {}, //服务端
+  validate() {}, // 服务端
+  asyncData(context) {
+    ctx.app // 根实例
+    ctx.route // 路由实例
+    ctx.params //路由参数
+    ctx.query // 路由问号后面的参数
+    ctx.error // 错误处理方法
+    // 尽量使用try catch的写法，将所有异常都捕捉到
+    // try {
+    //   throw new Error()
+    // } catch {
+    //   ctx.error({ statusCode: 500, message: '服务器开小差了~' })
+    // }
+
+    // 插件'~plugins/ctx-inject.js的使用
+    // 尽量使用try catch的写法，将所有异常都捕捉到
+    // try {
+    //     throw new Error()
+    // } catch(err) {
+    //     ctx.$errorHandler(err)
+    // }
+
+  }, // 服务端
+  fetch() {}, // store数据加载
+  beforeCreate() {
+    // 服务端和客户端都会执行
+  },
+  created() {}, // 服务端和客户端都会执行,
+  beforeMount() {},
+  mounted() {} // 客户端
+  */
 }
 </script>
 

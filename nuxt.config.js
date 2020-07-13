@@ -48,7 +48,9 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    '@/plugins/element-ui'
+    // 两种别名方式都是推荐使用方式
+    '@/plugins/element-ui',
+    '~plugins/ctx-inject.js' // 同意错误处理看example.vue的asyncData
   ],
   /*
   ** Auto import components
@@ -70,6 +72,17 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
-    transpile: [/^element-ui/]
+    transpile: [/^element-ui/],
+    // extend(config, ctx) {
+    //   // Run ESLint on save
+    //   if (ctx.isDev && ctx.isClient) {
+    //     config.module.rules.push({
+    //       enforce: 'pre',
+    //       test: /\.(js|vue)$/,
+    //       loader: 'eslint-loader',
+    //       exclude: /(node_modules)/
+    //     })
+    //   }
+    // }
   }
 }

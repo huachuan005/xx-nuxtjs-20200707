@@ -1,3 +1,4 @@
+
 module.exports = {
   root: true,
   env: {
@@ -8,11 +9,8 @@ module.exports = {
     parser: 'babel-eslint'
   },
   extends: [
-    'eslint:recommended',
-    // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-    // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-    'plugin:vue/recommended',
-    // 'plugin:prettier/recommended'
+    '@nuxtjs', // 该规则对应这个依赖： @nuxtjs/eslint-config
+    'plugin:nuxt/recommended'
   ],
   // 校验 .vue 文件
   plugins: [
