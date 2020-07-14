@@ -1,6 +1,9 @@
+// 注入 context
 // 为context注册全局的错误处理事件
 export default (ctx, inject) => {
-  ctx.$errorHandler = err => {
+  // 注入方法1：
+  // 使用：ctx.errorHandler(err)
+  ctx.errorHandler = err => {
     try {
       const res = err.data
       if (res) {
@@ -13,4 +16,8 @@ export default (ctx, inject) => {
       ctx.error({ statusCode: 500, message: '服务器开小差了~' })
     }
   }
+  // 注入方法2：
+  // 使用：ctx.app.$myInjectedFunction('ctx!')
+  // app.$myInjectedFunction = string => console.log('Okay, another function', string)
+  // 方法3：同时注入：https://juejin.im/post/ebf5dcf5188256d4266285d#heading-16
 }

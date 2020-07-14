@@ -6,6 +6,13 @@
     <h1 class="red">Hello {{ name }}!</h1>
     <!-- 路由使用 -->
     <nuxt-link to="/">路由的使用，点击回到：首页</nuxt-link>
+    <p>公共组件注册管理运用：</p>
+    <common-button></common-button>
+    <ul>
+      <li v-for="(item, index) in hotsVideoList" :key="index" style="font-size: 16px;">
+        <p>{{item.title}}</p>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -13,7 +20,8 @@
 export default {
   // hc指定当前页面使用的布局（layouts 根目录下的布局文件）。
   // 使用布局，blog，~layouts/blog
-  layout: 'blog',
+  // layout: 'blog',
+  layout: 'default-white',
   data() {
     return {
       title: 'hello world!!!!!',
@@ -27,13 +35,25 @@ export default {
   //   // called every time before loading the component
   //   return { name: 'World' }
   // },
-  async asyncData({ params }) {
-    // const { data } = await axios.get(`https://my-api/posts/${params.id}`)
-    // return { title: data.title }
-    // hc 访问动态路由参数
-    const slug = params.slug // 当呼叫/abc时，slug将是“abc”
-    return { slug }
+  // async asyncData({ params }) {
+  //   // hc 访问动态路由参数
+  //   const slug = params.slug // 当呼叫/abc时，slug将是“abc”
+  //   return { slug }
+  // },
+  async asyncData(context) {
+    // https://movement.gzstv.com/sv/hots/
+    let data = await context.app.$axios.get(
+      'https://movement.gzstv.com/sv/hots/'
+    )
+    console.log('asyncData -> data', data)
+    return { hotsVideoList: JSON.parse(JSON.stringify(data.result)) }
   },
+  // 非SSR使用Axios
+  async created() {
+    let data = await this.$axios.get('https://movement.gzstv.com/sv/hots/')
+    console.log('created -> data', data)
+  },
+
   // hc与 asyncData 方法类似，用于在渲染页面之前获取数据填充应用的状态树（store）。不同的是 fetch 方法不会设置组件的数据。详情请参考 关于fetch方法的文档。
   async fetch({ store, params }) {
     // fetch方法用于在呈现页面之前填充存储
@@ -43,22 +63,38 @@ export default {
     // store.commit('setStars', data)
     // hc还可以有另一种形式，可以查看文档：https://www.nuxtjs.cn/api/pages-fetch#fetch-%E6%96%B9%E6%B3%95
   },
+  // 生面周期调用顺序：validate  =>  asyncData  =>  fetch  =>  head
   // hc配置当前页面的 Meta 标签, 详情参考 页面头部配置API。
   head() {
     return {
       title: this.title,
       meta: [
+        // 为了避免子组件中的 meta 标签不能正确覆盖父组件中相同的标签而产生重复的现象，建议利用 hid 键为 meta 标签配一个唯一的标识编号。
         {
           hid: '描述描述描述',
-          name: 'name描述',
-          content: '自定义内容描述'
+          name: 'name描述name描述name描述',
+          content: '自定义内容描述自定义内容描述自定义内容描述'
+        }
+      ],
+      // 组件内配置外部资源
+      link: [
+        {
+          rel: 'stylesheet',
+          href:
+            '//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/atom-one-light.min.css'
+        }
+      ],
+      script: [
+        {
+          src:
+            '//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js'
         }
       ]
     }
     // 配置当前页面的 Meta 标签
     // Set Meta Tags for this Page
   },
-  // 校验方法用于校验 动态路由的参数。
+  // validate校验方法用于校验 动态路由的参数。
   // hc 需要使用查看官方文档或：https://juejin.im/post/5ebf5dcf5188256d4266285d#heading-7
   // validate({ params }) {
   //   console.log('validate -> params', params)
@@ -85,7 +121,7 @@ export default {
   /*
   middleware() {}, //服务端
   validate() {}, // 服务端
-  asyncData(context) {
+  asyncData(ctx) {
     ctx.app // 根实例
     ctx.route // 路由实例
     ctx.params //路由参数
@@ -116,6 +152,10 @@ export default {
   beforeMount() {},
   mounted() {} // 客户端
   */
+  // watchQuery：
+  // 使用 watchQuery有点好处就是，当我们使用浏览器后退按钮或前进按钮时，页面数据会刷新，因为参数字符串发生了变化。
+  // 监听参数字符串更改并在更改时执行组件方法 (asyncData, fetch, validate, layout, ...)
+  // watchQuery: ['keyword', 'type', 'period'],
 }
 </script>
 
