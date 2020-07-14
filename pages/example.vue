@@ -59,7 +59,7 @@ export default {
     // Set Meta Tags for this Page
   },
   // 校验方法用于校验 动态路由的参数。
-  // hc 需要使用查看文档
+  // hc 需要使用查看官方文档或：https://juejin.im/post/5ebf5dcf5188256d4266285d#heading-7
   // validate({ params }) {
   //   console.log('validate -> params', params)
   //   console.log('validate -> params.id', params.id)
@@ -103,6 +103,7 @@ export default {
     // try {
     //     throw new Error()
     // } catch(err) {
+    // 应用插件：$errorHandler
     //     ctx.$errorHandler(err)
     // }
 
