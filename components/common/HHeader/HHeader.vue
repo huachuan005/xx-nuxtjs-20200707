@@ -20,14 +20,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 0 10px rgba(205, 205, 205, 0.8);
   .logo {
+    cursor: pointer;
+    height: 80px;
+    line-height: 80px;
     padding: 0 20px;
-    display: inline-flex;
+    display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: center;
     .moli-icon {
       width: 40px;
       height: 40px;
+      margin-right: 12px;
     }
     .title {
       display: inline-block;
@@ -38,9 +43,11 @@
     display: inline-flex;
     justify-content: flex-end;
     align-items: center;
+    margin-right: 20px;
 
     li {
       padding: 20px;
+      cursor: pointer;
       transform: rotate(-90deg);
       -ms-transform: rotate(-90deg); /* IE 9 */
       -moz-transform: rotate(-90deg); /* Firefox */
