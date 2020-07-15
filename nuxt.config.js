@@ -95,7 +95,7 @@ export default {
   */
   modules: [
     '@nuxtjs/axios',
-    'cookie-universal-nuxt' // 管理cookies
+    'cookie-universal-nuxt', // 管理cookies
     // 服务端：获取
     // app.$cookies.get('name')
     // // 设置
@@ -108,10 +108,17 @@ export default {
     // this.$cookies.set('name', 'value')
     // // 删除
     // this.$cookies.remove('name')
+    '@nuxtjs/style-resources' // 全局导入less的变量模块
   ],
+  styleResources: {
+    less: [
+      './assets/styles/variable.less'
+    ]
+  },
   // 自定义配置路由
   router: {
     extendRoutes(routes, resolve) {
+      // 这个地方无法重定向成功，需要检查一下
       routes.push({
         path: '/',
         redirect: {

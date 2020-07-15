@@ -1,6 +1,6 @@
 export default {
   install(Vue) {
-    const components = require.context('~/components/common', false, /\.vue$/)
+    const components = require.context('~components/common', false, /\.vue$/)
     // components.keys() 获取文件名数组
     components.keys().map(path => {
       // 获取组件文件名

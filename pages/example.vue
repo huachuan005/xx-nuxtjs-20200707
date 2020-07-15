@@ -40,6 +40,7 @@ export default {
   //   const slug = params.slug // 当呼叫/abc时，slug将是“abc”
   //   return { slug }
   // },
+  // hc SSR使用Axios
   async asyncData(context) {
     // https://movement.gzstv.com/sv/hots/
     let data = await context.app.$axios.get(
@@ -103,6 +104,13 @@ export default {
   // hc如果校验方法返回的值不为 true或Promise中resolve 解析为false或抛出Error，Nuxt.js 将自动加载显示 404 错误页面或 500 错误页面。
   //   return /^\d+$/.test(params.id)
   // },
+  // async validate ({ params, store }) {
+      // throw new Error(JSON.stringify({ 
+      //   message: 'validate错误',
+      //   params
+      // }))
+  //   // 这里传过去的 statusCode 为 500，message 就是 new Error 中的内容。
+  // },
   // hc 中间件使用查看文档：https://www.nuxtjs.cn/guide/routing#%E4%B8%AD%E9%97%B4%E4%BB%B6
   // middleware: 'stats',
   // 组件渲染
@@ -160,8 +168,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import '~assets/styles/variable.less';
 .red {
-  color: @colorButtonTheme;
+  color: @colorTip;
 }
 </style>
