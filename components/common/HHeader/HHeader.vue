@@ -35,6 +35,8 @@
       margin-right: 12px;
     }
     .title {
+      font-weight: 900;
+      font-size: 20px;
       display: inline-block;
     }
   }
@@ -46,13 +48,18 @@
     margin-right: 20px;
 
     li {
-      padding: 20px;
+      font-weight: 900;
+      font-size: 20px;
+      padding: 0 20px;
       cursor: pointer;
       transform: rotate(-90deg);
       -ms-transform: rotate(-90deg); /* IE 9 */
       -moz-transform: rotate(-90deg); /* Firefox */
       -webkit-transform: rotate(-90deg); /* Safari 和 Chrome */
       -o-transform: rotate(-90deg); /* Opera */
+      &:hover {
+        color: #4faab7;
+      }
     }
   }
 }
