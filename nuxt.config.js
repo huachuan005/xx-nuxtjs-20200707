@@ -31,7 +31,7 @@ export default {
   */
   head: {
     // 全局的head
-    title: process.env.npm_package_name || '',
+    title: '茉莉茉莉',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -132,6 +132,7 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+    base: '/molimoli/',
     transpile: [/^element-ui/],
     // extend(config, ctx) {
     //   // Run ESLint on save

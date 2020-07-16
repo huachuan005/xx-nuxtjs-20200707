@@ -27,7 +27,10 @@
       <div class="author-right">
         <p class="title">茉莉茉莉</p>
         <p class="desc">软件设计、开发</p>
-        <p class="miaosu">点击联系</p>
+        <div class="affiliation">
+          <p class="title">联系：</p>
+          <img class="affiliation-qr" src="~assets/images/QR-code.jpg" alt="QR">
+        </div>
       </div>
     </div>
   </div>
