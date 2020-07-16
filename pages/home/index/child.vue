@@ -1,7 +1,6 @@
 <template>
-  <div>
-    users
-    <nuxt-child />
+  <div class="home-child">
+    home-child
   </div>
 </template>
 
@@ -9,5 +8,5 @@
 export default {}
 </script>
 
-<style>
+<style lang="less" scoped>
 </style>

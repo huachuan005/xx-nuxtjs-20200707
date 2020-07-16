@@ -1,0 +1,55 @@
+.el-carousel__item h3 {
+  color: #a8d0de;
+  font-size: 14px;
+  opacity: 0.75;
+  line-height: 200px;
+  margin: 0;
+}
+
+.el-carousel__item:nth-child(2n) {
+  background-color: #a8d0de;
+}
+
+.el-carousel__item:nth-child(2n+1) {
+  background-color: #76bdd6;
+}
+
+/deep/ .el-carousel__button {
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  background-color: rgb(65, 65, 65);
+}
+
+/deep/ .el-carousel__indicator.is-active button {
+  background-color: #f47631;
+}
+
+.banner-recommend-list {
+
+  .banner-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    .banner-pic {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .recommend-text {
+      box-sizing: border-box;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 140px;
+      background-color: rgba(231, 224, 224, 0.3);
+      padding: 20px;
+    }
+  }
+}

@@ -13,6 +13,8 @@ html,
 body {
   background: #fff7e4;
   height: 100%;
+  min-width: 1024px;
+  overflow: auto;
 }
 .container {
   min-height: 100vh;

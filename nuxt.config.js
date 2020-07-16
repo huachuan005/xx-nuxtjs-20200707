@@ -122,7 +122,7 @@ export default {
       routes.push({
         path: '/',
         redirect: {
-          name: 'example'
+          name: 'home'
         }
       })
     }

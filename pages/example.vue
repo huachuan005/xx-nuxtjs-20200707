@@ -168,6 +168,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
+// @import '~assets/styles/variable.less';
+
 .red {
   color: @colorTip;
 }

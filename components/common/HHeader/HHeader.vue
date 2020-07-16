@@ -19,7 +19,6 @@
   height: 80px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   box-shadow: 0 0 10px rgba(205, 205, 205, 0.8);
   .logo {
     cursor: pointer;
@@ -38,6 +37,9 @@
       font-weight: 900;
       font-size: 20px;
       display: inline-block;
+      &:hover {
+        color: #ff00ff;
+      }
     }
   }
 
