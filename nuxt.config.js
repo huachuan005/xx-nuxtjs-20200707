@@ -48,7 +48,7 @@ export default {
       // 添加外部资源
       { rel: 'stylesheet', href: '//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/atom-one-light.min.css' },
       // 添加icon
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: './favicon.ico' }
     ],
     // 全局配置加载外部资源
     script: [
