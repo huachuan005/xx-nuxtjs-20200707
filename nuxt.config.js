@@ -1,5 +1,6 @@
 
 export default {
+  publicPath: '/moli/',
   /*
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
@@ -117,6 +118,10 @@ export default {
   },
   // 自定义配置路由
   router: {
+    mode: 'hash', // 使用 'hash' 主要是为了适配以相对路径打开的静态站点， 必须使用 'hash' 否则路由跳转不生效
+    // base: '/'
+    // base: '/moli/',
+    base: process.env.NODE_ENV === 'production' ? './' : '/', // 使用 './' 主要是为了适配以相对路径打开的静态站点
     extendRoutes(routes, resolve) {
       // 这个地方无法重定向成功，需要检查一下
       routes.push({
@@ -131,8 +136,12 @@ export default {
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
+  generate: {
+    fallback: true, // 在将生成的站点部署到静态主机时，可以使用此文件。它将回退到模式：mode:'spa'。 主要是这个api的作用 打包生产404
+    interval: 150 // 两个渲染周期之间的间隔，以避免使用来自Web应用程序的API调用互相干扰。 建议加这个是因为error里面官网会叫你引入props:["error"]，这个时间间隔便是避免跳转后传值造成api冲突 我测试150是所有页面通过（之前设置100基本通过但是有一个页面始终报错白屏，也是纠结了好久，个人有个写代码的坏习惯：明明同样的代码页面引入方式一模一样，就是别的都能过唯独一个不过，就不会想配置代码问题（框架原理），总是会在这样的情况卡很久，难受）
+  },
   build: {
-    base: '/molimoli/',
+    base: '/moli/',
     transpile: [/^element-ui/],
     // extend(config, ctx) {
     //   // Run ESLint on save
